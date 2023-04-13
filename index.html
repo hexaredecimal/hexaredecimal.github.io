@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
+    <script type="text/javascript" src="./code.js"></script>
+    <title>oS8 | Home</title>
+    <style>
+        .window {
+            position: fixed;
+            width: 99%;
+            height: 97%;
+            background-color: black;
+            overflow-y: scroll;
+            
+        }
+
+        input[class="line"]:active {
+            border: none;
+        }
+
+        input[class="line"] {
+            width: 80%;
+            overflow-x: hidden;
+            border: 1px solid;
+            color: silver; 
+            background-color: black;
+            font-family: inherit;
+            font-size: 1rem;
+            border: none;
+            height: 1.3em;
+        }
+        pre {
+            border-left:3px solid #0051ee;
+            height: 1.5em;
+            padding-top:0%;
+            padding-bottom: 0%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="window" id="win">
+        <div class="title-bar" style="position: fixed;width: 98.29%;">
+          <div class="title-bar-text">Terminal</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body" id="cmd">
+          <!-- <pre>OS8 built April 2023 
+&copy; Copyright 2023 Gama Sibusiso
+          </pre> -->
+          <br><br>
+          <pre>[/User/Home] $ <input type="text" class="line" id="input1" placeholder="type help for info"></pre>
+        </div>
+      </div>
+      <script>
+        var index = 1;
+        var input = document.getElementById("input" + index);
+        var cmd = document.getElementById("cmd");
+        var win = document.getElementById("win");
+
+
+        win.addEventListener("click", (event) => {
+          input.focus(); 
+        });
+
+        // Execute a function when the user presses a key on the keyboard
+
+        function addLine(line, color="silver") {
+          document.getElementById("input" + index).setAttribute("placeholder", "");
+          input.setAttribute("disabled", "true");
+          var pre = document.createElement("pre");
+          index++;
+          let prefix = (line.length > 0 ) ? "" : "[/User/Home] $ "
+          pre.innerHTML = `${prefix}<input type="text" style="color: ${color}" class="line" value="${line}" id="input${index}" placeholder="__" autofocus>`;
+          cmd.appendChild(pre);
+          document.getElementById("input" + index).focus();
+          document.getElementById("input" + index).addEventListener("keypress", next);
+          input = document.getElementById("input" + index);
+        }
+
+        function printFile(arr) {
+          for (var i = 0; i < arr.length; i++) {
+            txt = arr[i];
+            addLine(txt);
+          }
+        }
+
+        function printFiles(arr) {
+          for (var i = 0; i < arr.length; i++) {
+            txt = arr[i];
+
+            if (txt.endsWith("/")  || txt.endsWith("@gitrepo")) {
+
+              if (txt.endsWith("@gitrepo")) {
+              addLine(" GITHUB@REPO                    " + txt, "blue");
+                continue;
+              }
+
+              addLine(" DIR                          " + txt, "blue");
+              continue;
+            }
+
+            addLine(" --rwxrwxrw   12 April 2023     " + txt, txt.endsWith(".out") ? "lime" : "silver");
+          }
+
+          addLine("");
+        }
+
+
+        function next(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+
+                var args = input.value.split(" ");
+                var text = args[0];
+             
+                if (text.length == 0 || text == ""){
+                  addLine("");
+                  return;
+                }
+
+                if (text == "help") {
+                  var help = ["Os8 Terminal help", " ", " ",  "about", "social", "_"];
+                  printFile(help);
+                  addLine("");
+                } else if (text == "clear") {
+                    const myNode = document.getElementById("cmd");
+                    while (myNode.firstChild) {
+                      myNode.firstChild.remove()
+                    }
+                    myNode.innerHTML = `<br><br><pre>[/User/Home] $ <input type="text" class="line" id="input1" placeholder="type help for info"></pre>`;
+                    index = 1;
+                    input = document.getElementById("input" + index);
+                    input.addEventListener("keypress", next);
+                    input.focus();
+                } else if (text == "cat") {
+                  if (args.length != 2) {
+                    addLine("    cat <filename>", "red");
+                    addLine("");
+                    return; 
+                  }
+                  var file = args[1];
+                  console.log(file);
+                  if (file == "main.cpp") {
+                    console.log(file_main_c);
+                    printFile(file_main_c);
+                    addLine("");
+                  } else {
+                    addLine(`file '${file}' does not exist`, "red")
+                    addLine("");
+                  }
+                  return;
+                } else if (text == "ls") {
+                  printFiles(files);
+                } else if (text == "./a.out") {
+                  addLine("2"); 
+                  addLine("");
+                } else if (text == "about") {
+                  printFile(about);
+                  addLine("");
+                } else if (text == 'cd') {
+                  if (args.length != 2) {
+                    addLine("    cd <folder|git@repo>"), "red";
+                    addLine("");
+                    return; 
+                  }
+                  var file = args[1];
+                  
+                }
+                 else {
+                  addLine(`\`${text}\` is not an internal or external command`);
+                  addLine("");
+                }
+
+  
+
+            }
+            
+        }
+        input.addEventListener("keypress", next); 
+      </script>
+</body>
+</html>
