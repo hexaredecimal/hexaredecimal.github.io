@@ -114,6 +114,7 @@
           addLine("");
         }
 
+        
 
         function next(event) {
             // If the user presses the "Enter" key on the keyboard
@@ -131,7 +132,15 @@
                 }
 
                 if (text == "help") {
-                  var help = ["Os8 Terminal help", " ", " ",  "about", "social", "_"];
+                  var help = [
+                    "hexaredecimal web terminal", 
+                    "help:",
+                    "   about   - Print the about information",
+                    "   cat     - Prints a file to the stdout",
+                    "   clear   - Clear the terminal",
+                    "   ls      - List the files in cwd",
+                    "   pwd     - Prints the cwd"
+                  ];
                   printFile(help);
                   addLine("");
                 } else if (text == "clear") {
@@ -152,19 +161,26 @@
                   }
                   var file = args[1];
                   console.log(file);
-                  if (file == "main.cpp") {
+                  if (file == "main.csp") {
                     console.log(file_main_c);
                     printFile(file_main_c);
                     addLine("");
-                  } else {
+                  } else if (file == "Readme.md") {
+                    printFile(file_readme);
+                    addLine("");
+                  }
+                  else {
                     addLine(`file '${file}' does not exist`, "red")
                     addLine("");
                   }
                   return;
                 } else if (text == "ls") {
                   printFiles(files);
+                }else if (text == "pwd") {
+                  addLine("/User/Home");
+                  addLine("");
                 } else if (text == "./a.out") {
-                  addLine("2"); 
+                  addLine("Hello, World!, Welcome to HexAreDecimal"); 
                   addLine("");
                 } else if (text == "about") {
                   printFile(about);

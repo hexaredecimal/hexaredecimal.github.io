@@ -1,29 +1,49 @@
 
 
 const file_main_c =[
-"#include <iostream>",
-" ",
-" ",
-"int main() {",
-'    std::cout << 1 + 1 << std::endl;',
-"    return 0;",
-"}"
+'import std.csp;',
+'  ',
+'fn main() {',
+'	std::io::puts(Hello, World!, Welcome to HexAreDecimal);',
+'	<- 0;',
+'}'
  ] ; 
 
+ const file_readme =[
+	'This is my personal web site', 
+	"   ",
+	"Have fun with the commands", 
+	"Fork it and make it your own!",
+
+	'	+------------+													',
+	'	| /--\  /--\ |	user: hexaredecimal@root						',
+	'	| |  |  |  | |	os: Ubuntu 22.04								',
+	'	| |  |__|  | |	DE: i3											',
+	'	| |	 ___   | |	PL: C++ ZIG JAVASCRIPT JAVA GO					',
+	'	| |  |  |  | |	ED: VS CODE EMACS								',
+	'	| |  |  |  | |													',
+	'	| \__/  \__/ |													',
+	'	+------------+													',
+	'					'
+] ; 
+	
 
  const files = [
     "a.out",
-    "main.cpp",
+    "main.csp",
     "Readme.md",
     "projects@gitrepo"
  ];
 
 
- const about = [
-    "                       OS8 by Gama Sibusiso",
-    "               forked from  NanoShell (April) 2023\n", 
-    "  ",
-    "   ", 
-    "                visit: github.com/vultureofficial/OS8", 
-    "  "
- ];
+ const about =
+ [
+	"HexAreDecimal.github.io",
+	"		\n",
+ 	"facebook: facebook.com/dollazonmyhead",
+ 	"email: mfanakagama@gmail.com",
+	"reddit: r/hexarededimal",
+	"		\n",
+	" \n"
+ 	]	;
+
