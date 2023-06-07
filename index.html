@@ -161,6 +161,17 @@
                     return;
                   }
                   var term = args[1];
+                  var regex = /(htt(p|ps)\:)|([a-zA-Z_0-9]+)\.([a-z][[a-z]+)/.test(term);
+                  if (regex) {
+                    let prefix = "";
+                    if (/(htt(p|ps)\:)/.test(term) == false) {
+                      prefix = "https://"
+                    }
+                    window.open(prefix + term);
+                    addLine("");
+                    return;
+                  }
+
                   let url = `https://www.google.com/search?q=${term}`
                   window.open(url);
                   addLine("");
