@@ -14,7 +14,7 @@
             height: 97%;
             background-color: black;
             overflow-y: scroll;
-            
+
         }
 
         input[class="line"]:active {
@@ -25,7 +25,7 @@
             width: 80%;
             overflow-x: hidden;
             border: 1px solid;
-            color: silver; 
+            color: silver;
             background-color: black;
             font-family: inherit;
             font-size: 1rem;
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="window-body" id="cmd">
-          <!-- <pre>OS8 built April 2023 
+          <!-- <pre>OS8 built April 2023
 &copy; Copyright 2023 Gama Sibusiso
           </pre> -->
           <br><br>
@@ -68,7 +68,7 @@
 
 
         win.addEventListener("click", (event) => {
-          input.focus(); 
+          input.focus();
         });
 
         // Execute a function when the user presses a key on the keyboard
@@ -96,36 +96,28 @@
         function printFiles(arr) {
           for (var i = 0; i < arr.length; i++) {
             txt = arr[i];
-
             if (txt.endsWith("/")  || txt.endsWith("@gitrepo")) {
-
               if (txt.endsWith("@gitrepo")) {
               addLine(" GITHUB@REPO                    " + txt, "blue");
                 continue;
               }
-
               addLine(" DIR                          " + txt, "blue");
               continue;
             }
-
             addLine(" --rwxrwxrw   12 April 2023     " + txt, txt.endsWith(".out") ? "lime" : "silver");
           }
-
           addLine("");
         }
 
-        
+
 
         function next(event) {
-            // If the user presses the "Enter" key on the keyboard
             if (event.key === "Enter") {
                 // Cancel the default action, if needed
                 event.preventDefault();
-                // Trigger the button element with a click
-
                 var args = input.value.split(" ");
                 var text = args[0];
-             
+
                 if (text.length == 0 || text == ""){
                   addLine("");
                   return;
@@ -133,16 +125,25 @@
 
                 if (text == "help") {
                   var help = [
-                    "hexaredecimal web terminal", 
+                    "hexaredecimal web terminal",
                     "help:",
                     "   about   - Print the about information",
                     "   cat     - Prints a file to the stdout",
                     "   clear   - Clear the terminal",
+                    "   github  - Visit my github account",
                     "   ls      - List the files in cwd",
-                    "   pwd     - Prints the cwd"
+                    "   os      - Download the OS I use",
+                    "   pwd     - Prints the cwd",
+                    "   search  - Search using google",
+                    "   yt      - Search using YouTube"
                   ];
+
                   printFile(help);
                   addLine("");
+                } else if (text == "github") {
+                    window.open("https://github.com/hexaredecimal/");
+                } else if (text == "os") {
+                    window.open("https://ubuntu.com/download/desktop");
                 } else if (text == "clear") {
                     const myNode = document.getElementById("cmd");
                     while (myNode.firstChild) {
@@ -153,11 +154,33 @@
                     input = document.getElementById("input" + index);
                     input.addEventListener("keypress", next);
                     input.focus();
+                } else if (text == "search") {
+                  if (args.length != 2) {
+                    addLine("    search <term>", "red");
+                    addLine("");
+                    return;
+                  }
+                  var term = args[1];
+                  let url = `https://www.google.com/search?q=${term}`
+                  window.open(url);
+                  addLine("");
+                  return;
+                }else if (text == "yt") {
+                  if (args.length != 2) {
+                    addLine("    yt <topic>", "red");
+                    addLine("");
+                    return;
+                  }
+                  var term = args[1];
+                  let url = `https://www.youtube.com/results?search_query=${term}`
+                  window.open(url);
+                  addLine("");
+                  return;
                 } else if (text == "cat") {
                   if (args.length != 2) {
                     addLine("    cat <filename>", "red");
                     addLine("");
-                    return; 
+                    return;
                   }
                   var file = args[1];
                   console.log(file);
@@ -180,7 +203,7 @@
                   addLine("/User/Home");
                   addLine("");
                 } else if (text == "./a.out") {
-                  addLine("Hello, World!, Welcome to HexAreDecimal"); 
+                  addLine("Hello, World!, Welcome to HexAreDecimal");
                   addLine("");
                 } else if (text == "about") {
                   printFile(about);
@@ -189,22 +212,22 @@
                   if (args.length != 2) {
                     addLine("    cd <folder|git@repo>"), "red";
                     addLine("");
-                    return; 
+                    return;
                   }
                   var file = args[1];
-                  
+
                 }
                  else {
                   addLine(`\`${text}\` is not an internal or external command`);
                   addLine("");
                 }
 
-  
+
 
             }
-            
+
         }
-        input.addEventListener("keypress", next); 
+        input.addEventListener("keypress", next);
       </script>
 </body>
 </html>
