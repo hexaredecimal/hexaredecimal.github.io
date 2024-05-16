@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-resume/blob/master/LICENSE)
  */
 body {
+  overflow-x: hidden;
   font-family: 'Open Sans', serif;
   padding-top: 54px;
   color: #868e96; }
@@ -20,7 +21,21 @@ body {
   min-width: 100%;
   min-height: 100%;
   z-index: -5;
+  overflow-x: hidden;
 }
+
+@media (max-width:480px) {
+  #myVideo {
+    translate: 40% 0%;
+  }
+}
+
+@media (max-width: 840px) {
+  #myVideo {
+    translate: 40% 0%;
+  }
+}
+
 
 h1,
 h2,
