@@ -66,8 +66,8 @@
        Equcyph: {about: "A mathematics equation parser and plotter"},
        JTempl: {about: "A compile-time JSP-Like template transpiler for Java"},
        TreeLibre: {about: "A fractal tree generator in Java"},
-       PicassoCode: {about: "A code driven image editor"},
-       PiccodeScript: {about: "A small functional interpreter built for PicassoCode"},
+       PicassoCode: {about: "A code driven image editor", org: "SolarisStudio"},
+       PiccodeScript: {about: "A small functional interpreter built for PicassoCode", org: "SolarisStudio"},
        Llaml: {about: "A fork of Roy with structural typing <br/>and native compilation"},
      };
 
@@ -85,9 +85,9 @@
       <h4>Projects</h4>
       <hr width="70%" />
        `;
-       const me = "hexaredecimal";
        for (key of Object.keys(projects)) {
          const data = projects[key];
+         const me = data.org ?? "hexaredecimal";
          const url = `https://github.com/${me}/${key}`;
          projectList = projectList.concat(
            `<div class=".flex-col">
