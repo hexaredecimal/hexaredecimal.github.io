@@ -20,6 +20,10 @@
   }
 }
 
+hr {
+  background-color: black;
+}
+
 
 .content {
   margin-left: 1.5em;

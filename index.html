@@ -15,7 +15,7 @@
         <p id="dateOfBirth"></p>
         <p id="ageSinceBirth"></p>
         <p>mfanakagama@gmail.com</p>
-        <p>Better known as <i>Hexaredecimal</i></p>
+        <p>Better known as <i><a href="">Hexaredecimal</a></i></p>
         <hr width="70%" />
         
         <h4>Occupation</h4>
@@ -37,22 +37,22 @@
 
       <div class="content">
         <h4>Developer Tools</h4>
+        <hr width="70%" /> <br>
           <p>Java C++ Rust</p>
           <p>JavaScript HTML CSS</p>
-          <p>PL SQL Android</p>
-        <p></p>
-        <hr width="70%" /> <br>
+          <p>PL SQL Android</p><br>
 
         <h4>Frameworks and Libraries</h4>
+        <hr width="70%" /> <br>
           <p>SpringBoot Javalin VaadinUI</p>
           <p>Java Swing JavaFx</p>
           <p>ReactJs Express.js tailwindcss</p>
-        <p></p>
-        <hr width="70%" /> <br>
+        <br/> 
 
 
-        <div style="border-top: 1px solid black;">
+        <div style="border-top: 1px solid black; padding-top: 1em">
           <h4>Achievements</h4>
+          <hr width="70%" /> <br>
           <p>2022 LVH Winner (3rd Place)</p>
           <p>2024 LVH Winner (1st Place)</p>
           <hr width="70%" />
@@ -60,14 +60,15 @@
       </div>
     </div>
 
+
     <script type="text/javascript">
      const projects = {
-       Equcyph: {url: "https://github.com/", about: "A mathematics equation parser and plotter"},
-       JTempl: {url: "https://github.com/", about: "A compile-time JSP-Like template transpiler for Java"},
-       TreeLibre: {url: "https://github.com/", about: "A fractal tree generator in Java"},
-       PicassoCode: {url: "https://github.com/", about: "A code driven image editor"},
-       PiccodeScript: {url: "https://github.com/", about: "A small functional interpreter built for PicassoCode"},
-       Llaml: {url: "https://github.com/", about: "A fork of Roy with structural typing <br/>and native compilation"},
+       Equcyph: {about: "A mathematics equation parser and plotter"},
+       JTempl: {about: "A compile-time JSP-Like template transpiler for Java"},
+       TreeLibre: {about: "A fractal tree generator in Java"},
+       PicassoCode: {about: "A code driven image editor"},
+       PiccodeScript: {about: "A small functional interpreter built for PicassoCode"},
+       Llaml: {about: "A fork of Roy with structural typing <br/>and native compilation"},
      };
 
       const load = () => {
@@ -84,11 +85,13 @@
       <h4>Projects</h4>
       <hr width="70%" />
        `;
+       const me = "hexaredecimal";
        for (key of Object.keys(projects)) {
          const data = projects[key];
+         const url = `https://github.com/${me}/${key}`;
          projectList = projectList.concat(
            `<div class=".flex-col">
-              <h4><a href="${data.url}">${key}</a></h4>
+              <h4><a href="${url}">${key}</a></h4>
               <div><p>${data.about}</p></div>
            </div>`
          );
