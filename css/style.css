@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  left: 0;
+}
+
+.flex-col {
+  padding-left: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: flex-col;
+
+  img {
+    padding-right: 1em;
+  }
+
+  div {
+    line-height: 20px;
+  }
+}
+
+
+.content {
+  margin-left: 1.5em;
+  padding-left: .5em;
+  border-left: 1px solid black;
+}
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="flex-col">
+      <img src="./pics/me.jpg" width="30%"/>
+      <div>
+        <h4>Personal Details</h4>
+        <p>Gama Sibusiso Vincent</p>
+        <p id="dateOfBirth"></p>
+        <p id="ageSinceBirth"></p>
+        <p>mfanakagama@gmail.com</p>
+        <p>Better known as <i>Hexaredecimal</i></p>
+        <hr width="70%" />
+        
+        <h4>Occupation</h4>
+        <p>Student @ Tshwane University of Technology</p>
+        <p>Freelancer</p>
+        <p>Open Source Developer</p>
+        <hr width="70%" />
+
+        <h4>Interests</h4>
+        <p>System Development</p>
+        <p>Embedded Systems</p>
+        <p>Backend Programming</p>
+      </div>
+    </div>
+
+    <div class="flex-col">
+      <div id="projectListDiv">
+      </div>
+
+      <div class="content">
+        <h4>Developer Tools</h4>
+          <p>Java C++ Rust</p>
+          <p>JavaScript HTML CSS</p>
+          <p>PL SQL Android</p>
+        <p></p>
+        <hr width="70%" /> <br>
+
+        <h4>Frameworks and Libraries</h4>
+          <p>SpringBoot Javalin VaadinUI</p>
+          <p>Java Swing JavaFx</p>
+          <p>ReactJs Express.js tailwindcss</p>
+        <p></p>
+        <hr width="70%" /> <br>
+
+
+        <div style="border-top: 1px solid black;">
+          <h4>Achievements</h4>
+          <p>2022 LVH Winner (3rd Place)</p>
+          <p>2024 LVH Winner (1st Place)</p>
+          <hr width="70%" />
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+     const projects = {
+       Equcyph: {url: "https://github.com/", about: "A mathematics equation parser and plotter"},
+       JTempl: {url: "https://github.com/", about: "A compile-time JSP-Like template transpiler for Java"},
+       TreeLibre: {url: "https://github.com/", about: "A fractal tree generator in Java"},
+       PicassoCode: {url: "https://github.com/", about: "A code driven image editor"},
+       PiccodeScript: {url: "https://github.com/", about: "A small functional interpreter built for PicassoCode"},
+       Llaml: {url: "https://github.com/", about: "A fork of Roy with structural typing <br/>and native compilation"},
+     };
+
+      const load = () => {
+        const dateOfBirth = document.getElementById("dateOfBirth");
+        const projectListDiv = document.getElementById("projectListDiv");
+        const ageSinceBirth = document.getElementById("ageSinceBirth");
+        const birthYear = 2002;
+        const thisYear = new Date().getFullYear();
+        const age = thisYear - birthYear;
+        dateOfBirth.innerText = `18-Sep-${birthYear}`;
+        ageSinceBirth.innerText = `${age} years old`;
+
+       let projectList = `
+      <h4>Projects</h4>
+      <hr width="70%" />
+       `;
+       for (key of Object.keys(projects)) {
+         const data = projects[key];
+         projectList = projectList.concat(
+           `<div class=".flex-col">
+              <h4><a href="${data.url}">${key}</a></h4>
+              <div><p>${data.about}</p></div>
+           </div>`
+         );
+       }
+       projectListDiv.innerHTML = projectList;
+      }
+      load();
+    </script>
+  </body>
+</html>
