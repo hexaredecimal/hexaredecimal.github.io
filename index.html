@@ -4,101 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hexaredecimal | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <link href="css/style.css" rel="stylesheet">
+    <script type="module" src="./js/load.js" ></script>
+
+     
+    <script src="./js/llaml.js" type="text/javascript"></script>
+    <script src="./js/picslang.js" type="text/javascript"></script>
+     <script>
+      // Initialize highlighting on all <pre><code> blocks
+      hljs.highlightAll();
+    </script>
+
   </head>
   <body>
     <div class="flex-col">
-      <img src="./pics/me.jpg" width="30%"/>
+      
       <div>
-        <h4>Personal Details</h4>
-        <p>Gama Sibusiso Vincent</p>
-        <p id="dateOfBirth"></p>
-        <p id="ageSinceBirth"></p>
-        <p>mfanakagama@gmail.com</p>
-        <p>Better known as <i><a href="">Hexaredecimal</a></i></p>
-        <hr width="70%" />
-        
-        <h4>Occupation</h4>
-        <p>Student @ Tshwane University of Technology</p>
-        <p>Freelancer</p>
-        <p>Open Source Developer</p>
-        <hr width="70%" />
+        <img src="./pics/me.jpg" width="95%"/>
+      </div>
 
-        <h4>Interests</h4>
-        <p>System Development</p>
-        <p>Embedded Systems</p>
-        <p>Backend Programming</p>
+      <div>
+        <h3>Gama Sibusiso Vincent</h3>
+        <p>
+          <a href="https://gtihub.com/hexaredecimal">https://github.com/hexaredecimal</a> 
+          <a href="mailto://mfanakagama@gmail.com">mfanakagama@gmail.com</a>
+        </p>
+        <hr width="45%" />
+        <p class="text-content-top">I am a Software and Open Source Developer</p>
+        <p class="text-content-top">As an undergrad, final year student @ Tshwane University
+        of technology, I love work on low level systems, graphics programming, 
+        server side programming (Backend) and compiler design.</p>
+
+        <p class="text-content-top">I have designed and worked on a few hobby interpreters for tiny
+        subset languages either as DSLs for other applications or as stand alone
+        programs. I mostly write transpilers (source-to-source compile) as they allow
+        me to learn how to translate language features from one language to another, even
+        if the target language is from a different paradigm.</p>
       </div>
     </div>
 
     <div class="flex-col">
-      <div id="projectListDiv">
+      <div>
+        <p>I have also worked on image graphics (graphics programming). My work
+          includes implementing custom double buffered renders, image exporters and implementing image
+          effects and filters. In the graphics programming space I also do graphical simulations.
+        </p>
+
+        <p class="text-content">I also work on backend API designs and intergrations, but on a smaller scale.
+          So far the backends I have worked on simply serve data to the client on request and intergrate
+          LLMs to allow AI chat in client apps.
+        </p>
+
+        <h3>Project Listing</h3>
+        <div id="projectList"></div>
+        <br/>
+        <h3>Code Experiments</h3>
+        <div></div>
       </div>
 
-      <div class="content">
-        <h4>Developer Tools</h4>
-        <hr width="70%" /> <br>
-          <p>Java C++ Rust</p>
-          <p>JavaScript HTML CSS</p>
-          <p>PL SQL Android</p><br>
-
-        <h4>Frameworks and Libraries</h4>
-        <hr width="70%" /> <br>
-          <p>SpringBoot Javalin VaadinUI</p>
-          <p>Java Swing JavaFx</p>
-          <p>ReactJs Express.js tailwindcss</p>
-        <br/> 
-
-
-        <div style="border-top: 1px solid black; padding-top: 1em">
-          <h4>Achievements</h4>
-          <hr width="70%" /> <br>
-          <p>2022 LVH Winner (3rd Place)</p>
-          <p>2024 LVH Winner (1st Place)</p>
-          <hr width="70%" />
-        </div>
-      </div>
     </div>
 
 
-    <script type="text/javascript">
-     const projects = {
-       Equcyph: {about: "A mathematics equation parser and plotter"},
-       JTempl: {about: "A compile-time JSP-Like template transpiler for Java"},
-       TreeLibre: {about: "A fractal tree generator in Java"},
-       PicassoCode: {about: "A code driven image editor", org: "SolarisStudio"},
-       PiccodeScript: {about: "A small functional interpreter built for PicassoCode", org: "SolarisStudio"},
-       Llaml: {about: "A fork of Roy with structural typing <br/>and native compilation"},
-     };
+    <script type="module">
+      import {load} from './js/load.js';
 
-      const load = () => {
-        const dateOfBirth = document.getElementById("dateOfBirth");
-        const projectListDiv = document.getElementById("projectListDiv");
-        const ageSinceBirth = document.getElementById("ageSinceBirth");
-        const birthYear = 2002;
-        const thisYear = new Date().getFullYear();
-        const age = thisYear - birthYear;
-        dateOfBirth.innerText = `18-Sep-${birthYear}`;
-        ageSinceBirth.innerText = `${age} years old`;
-
-       let projectList = `
-      <h4>Projects</h4>
-      <hr width="70%" />
-       `;
-       for (key of Object.keys(projects)) {
-         const data = projects[key];
-         const me = data.org ?? "hexaredecimal";
-         const url = `https://github.com/${me}/${key}`;
-         projectList = projectList.concat(
-           `<div class=".flex-col">
-              <h4><a href="${url}">${key}</a></h4>
-              <div><p>${data.about}</p></div>
-           </div>`
-         );
-       }
-       projectListDiv.innerHTML = projectList;
-      }
       load();
     </script>
   </body>
 </html>
+

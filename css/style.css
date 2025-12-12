@@ -7,11 +7,10 @@
 .flex-col {
   padding-left: 1em;
   padding-top: 1em;
-  padding-bottom: 1em;
   display: flex;
   flex-direction: flex-col;
 
-  img {
+  div > img {
     padding-right: 1em;
   }
 
@@ -20,14 +19,37 @@
   }
 }
 
-hr {
-  background-color: black;
-}
-
-
 .content {
   margin-left: 1.5em;
   padding-left: .5em;
   border-left: 1px solid black;
 }
 
+h3 {
+  padding-bottom: .5em;
+}
+
+.text-content {
+  padding-top: .75em;
+  padding-bottom: .75em;
+}
+
+.text-content-top {
+  padding-top: .75em;
+}
+
+.text-content-bottom {
+  padding-bottom: .75em;
+}
+
+ul {
+  margin-left: 2em;
+}
+body > p {
+  margin-left: 1em;
+}
+
+pre {
+  width: 75vw;
+  margin-left: 2em;
+}
